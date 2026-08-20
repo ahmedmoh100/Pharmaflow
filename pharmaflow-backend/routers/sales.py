@@ -5,6 +5,7 @@ Sales routes:
   POST /sales        — create sale (POS) — FIFO batch deduction + idempotency
 """
 
+import os
 import uuid
 import json
 from datetime import datetime, timezone, date
@@ -17,6 +18,10 @@ from utils.zatca_phase2 import generate_ubl_invoice_xml, compute_zatca_invoice_h
 router = APIRouter()
 
 VAT_RATES = {"zero_rated": 0.00, "standard": 0.15, "exempt": 0.00}
+
+# ZATCA seller identity — configurable via .env for production
+ZATCA_SELLER_NAME = os.environ.get("ZATCA_SELLER_NAME", "PharmaFlow Demo")
+ZATCA_VAT_NUMBER  = os.environ.get("ZATCA_VAT_NUMBER",  "311111111111113")
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -520,7 +525,7 @@ def create_sale(
                 }
 
             # ── 4c. ZATCA Phase 2 UBL 2.1 XML & Hash Generation ─────────────────────
-            seller_info = {"name": "PharmaFlow Demo", "vat_number": "311111111111113"}
+            seller_info = {"name": ZATCA_SELLER_NAME, "vat_number": ZATCA_VAT_NUMBER}
             buyer_info = {"name": customer_name or "Walk-in Patient"} if customer_id else None
             xml_items = [
                 {"name_en": si["medicine_id"], "quantity": si["quantity"], "unit_price": si["unit_price"]}
