@@ -4,8 +4,12 @@ Entry point: registers all routers, configures CORS, validates required env vars
 """
 
 import os
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 from dotenv import load_dotenv
 from db.connection import get_db
 
@@ -26,11 +30,16 @@ if not DATABASE_URL:
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 
 # ── App ───────────────────────────────────────────────────────────────────────
+limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI(
     title="PharmaFlow API",
     version="1.0.0",
     description="Pharmacy chain ERP/POS demo — inventory, sales, returns, audit trail, KSA regulatory compliance",
 )
+
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # ── CORS — specific origins only, never wildcard with credentials ─────────────
 app.add_middleware(

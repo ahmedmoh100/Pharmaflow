@@ -315,6 +315,19 @@ def close_session(db=Depends(get_db), current_user: dict = Depends(get_current_u
     if not session:
         raise HTTPException(status_code=404, detail="No active session to close")
 
+    # Re-fetch with FOR UPDATE inside a transaction to prevent concurrent close
+    with db.cursor() as cur:
+        cur.execute(
+            """SELECT * FROM cash_sessions
+               WHERE user_id = %s AND branch_id = %s AND status != 'CLOSED'
+               ORDER BY opened_at DESC LIMIT 1
+               FOR UPDATE""",
+            (user_id, branch_id),
+        )
+        session = cur.fetchone()
+    if not session:
+        raise HTTPException(status_code=404, detail="No active session to close")
+
     now = datetime.now(timezone.utc)
     today = session["opened_at"].date().isoformat() if hasattr(session["opened_at"], "date") else str(session["opened_at"])[:10]
 

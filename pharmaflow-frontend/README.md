@@ -122,7 +122,7 @@ pharmaflow/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/pharmaflow.git
+git clone https://github.com/ahmedmoh100/Pharmaflow.git
 cd pharmaflow
 ```
 
@@ -224,15 +224,13 @@ These routes are registered but return `501 Not Implemented` until API credentia
 |---|---|
 | POS, inventory, procurement, transfers | ✅ Fully implemented |
 | ZATCA Phase 1 QR codes | ✅ Implemented |
+| ZATCA Phase 2 cryptographic stamping | ✅ Utility implemented (`zatca_phase2.py`) — not wired into live sales flow |
 | Multi-branch with branch picker | ✅ Implemented |
 | Bilingual AR/EN | ✅ Implemented |
 | Full test suite (244 tests) | ✅ Implemented |
-| ZATCA Phase 2 cryptographic stamping | ⬜ Not implemented (next step after Phase 1) |
-| NPHIES insurance claims | ⬜ Stub only |
-| Wasfaty e-prescription API | ⬜ Stub only |
 | Multi-user concurrent sessions | ✅ Idempotency keys prevent duplicate sales |
-| Offline POS queue | ⬜ Not implemented |
-| Mobile app | ⬜ Not implemented |
+| NPHIES insurance claims | 🔶 Simulated workflow — no live payer connection |
+| Wasfaty e-prescription API | 🔶 Simulated workflow with OTP + stock deduction — no live MOH connection |
 
 ---
 

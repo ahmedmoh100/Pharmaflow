@@ -9,11 +9,15 @@ from db.connection import get_db
 from models.schemas import LoginRequest, TokenResponse, MeResponse
 from utils.auth import verify_password, create_access_token, get_current_user
 from utils.audit import log_action
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
 
 @router.post("/login", response_model=TokenResponse)
+@limiter.limit("5/minute")
 def login(body: LoginRequest, request: Request, db=Depends(get_db)):
     with db.cursor() as cur:
         cur.execute(
