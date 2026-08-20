@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment
+.env
+
+# Backups
+*.sql.bak
+backup_*.sql
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,420 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Page / content area ── */
+    --background: 0 0% 96%;          /* #f3f3f3 — workspace bg */
+    --foreground: 0 0% 10%;          /* #1a1a1a — main text */
+
+    /* ── Cards / panels / surfaces ── */
+    --card: 0 0% 100%;               /* #ffffff — panel, table bg */
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* ── Primary — D365 blue ── */
+    --primary: 210 100% 35%;         /* #0063b1 */
+    --primary-foreground: 0 0% 100%;
+
+    /* ── Secondary / muted ── */
+    --secondary: 210 17% 93%;        /* #eaeaea */
+    --secondary-foreground: 0 0% 10%;
+    --muted: 210 17% 93%;
+    --muted-foreground: 0 0% 40%;    /* #666 */
+
+    /* ── Accent — action pane red underline ── */
+    --accent: 358 64% 40%;           /* #a4262c */
+    --accent-foreground: 0 0% 100%;
+
+    /* ── Semantic colors ── */
+    --destructive: 358 64% 40%;      /* #a4262c */
+    --destructive-foreground: 0 0% 98%;
+    --success: 122 59% 34%;          /* #107c10 */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 100% 26%;          /* #835b00 */
+    --warning-foreground: 0 0% 100%;
+
+    /* ── Borders / inputs ── */
+    --border: 0 0% 88%;              /* #e0e0e0 */
+    --input: 0 0% 88%;
+    --ring: 210 100% 35%;
+
+    /* ── Charts ── */
+    --chart-1: 210 100% 35%;
+    --chart-2: 142 71% 40%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 281 60% 45%;
+
+    --radius: 0.5rem;                 /* card radius — applied to panels, tiles, nav items */
+
+    /* ── Nav tree (left panel) — light gray ── */
+    --nav: 0 0% 96%;                 /* #f5f5f5 */
+    --nav-foreground: 0 0% 10%;      /* #1a1a1a */
+    --nav-muted: 0 0% 47%;           /* #777 */
+    --nav-hover: 0 0% 92%;           /* #eaeaea */
+    --nav-active: 210 60% 92%;       /* #dce9f8 */
+    --nav-active-foreground: 210 100% 35%; /* #0063b1 */
+    --nav-active-bar: 210 100% 35%;  /* left border on active item */
+    --nav-border: 0 0% 88%;          /* #e0e0e0 */
+
+    /* ── Topbar — always dark navy regardless of theme ── */
+    --topbar: 228 37% 17%;           /* #1a2038 */
+    --topbar-foreground: 0 0% 100%;
+    --topbar-muted: 220 24% 68%;     /* #9aaac9 */
+
+    /* ── Properties panel (right) ── */
+    --props: 0 0% 98%;               /* #fafafa */
+    --props-foreground: 0 0% 10%;
+    --props-border: 0 0% 88%;
+
+    /* ── KPI tiles — dark solid squares ── */
+    --tile: 222 61% 25%;             /* #1a3a6b — default blue */
+    --tile-foreground: 0 0% 100%;
+    --tile-warn: 38 100% 18%;        /* #5a3e00 */
+    --tile-danger: 358 78% 23%;      /* #6b0c0f */
+    --tile-success: 122 79% 15%;     /* #0b4a0b */
+
+    /* ── Tag / badge colors ── */
+    --tag-green-bg: 122 59% 93%;     /* #dff6dd */
+    --tag-green-fg: 122 59% 34%;     /* #107c10 */
+    --tag-red-bg: 358 64% 95%;       /* #fde7e9 */
+    --tag-red-fg: 358 64% 40%;       /* #a4262c */
+    --tag-warn-bg: 45 100% 90%;      /* #fff4ce */
+    --tag-warn-fg: 38 100% 26%;      /* #835b00 */
+    --tag-blue-bg: 210 60% 92%;      /* #e6f0fa */
+    --tag-blue-fg: 210 100% 35%;     /* #0063b1 */
+    --tag-gray-bg: 0 0% 94%;         /* #f0f0f0 */
+    --tag-gray-fg: 0 0% 40%;         /* #666 */
+
+    /* ── Sidebar token kept for Shadcn Sheet component ── */
+    --sidebar: 0 0% 96%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-accent: 210 60% 92%;
+    --sidebar-accent-foreground: 210 100% 35%;
+    --sidebar-border: 0 0% 88%;
+
+    /* ── POS surface — always dark, never changes with theme ── */
+    --pos-bg:           222 47% 7%;
+    --pos-surface:      222 47% 10%;
+    --pos-card:         222 40% 14%;
+    --pos-border:       217 33% 20%;
+    --pos-fg:           210 40% 98%;
+    --pos-muted:        215 20% 65%;
+    --pos-subtle:       215 16% 47%;
+    --pos-input-bg:     217 33% 17%;
+    --pos-input-border: 217 33% 22%;
+    --pos-primary:      201 96% 40%;
+    --pos-accent:       184 82% 35%;
+
+    /* ── POS tile colors ── */
+    --tile-orange: 24 90% 48%;
+    --tile-amber:  32 90% 48%;
+    --tile-cobalt: 226 71% 40%;
+    --tile-ops:    222 25% 22%;
+
+    /* ── Motion / duration ── */
+    --duration-instant: 80ms;
+    --duration-fast:    150ms;
+    --duration-medium:  300ms;
+    --motion-slide-y:   -8px;
+
+    /* ── Selection border ── */
+    --border-width-selection: 3px;
+
+    /* ── Topbar input ── */
+    --topbar-input-bg:     rgba(255,255,255,0.10);
+    --topbar-input-border: rgba(255,255,255,0.15);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* ── Page / content area ── */
+      --background: 222 47% 9%;
+      --foreground: 210 40% 92%;
+
+      /* ── Cards / panels ── */
+      --card: 222 40% 13%;
+      --card-foreground: 210 40% 92%;
+      --popover: 222 40% 13%;
+      --popover-foreground: 210 40% 92%;
+
+      /* ── Primary ── */
+      --primary: 210 80% 55%;        /* lighter blue for dark bg */
+      --primary-foreground: 0 0% 100%;
+
+      /* ── Secondary / muted ── */
+      --secondary: 217 33% 19%;
+      --secondary-foreground: 210 40% 90%;
+      --muted: 217 33% 19%;
+      --muted-foreground: 215 20% 60%;
+
+      /* ── Accent ── */
+      --accent: 358 64% 55%;
+      --accent-foreground: 0 0% 100%;
+
+      /* ── Semantic ── */
+      --destructive: 358 64% 55%;
+      --destructive-foreground: 0 0% 98%;
+      --success: 142 60% 45%;
+      --success-foreground: 0 0% 100%;
+      --warning: 38 92% 55%;
+      --warning-foreground: 222 47% 11%;
+
+      /* ── Borders / inputs ── */
+      --border: 217 33% 22%;
+      --input: 217 33% 22%;
+      --ring: 210 80% 55%;
+
+      /* ── Charts ── */
+      --chart-1: 210 80% 55%;
+      --chart-2: 142 60% 45%;
+      --chart-3: 38 92% 55%;
+      --chart-4: 0 63% 55%;
+      --chart-5: 281 60% 55%;
+
+      /* ── Nav tree — dark adapted ── */
+      --nav: 222 47% 12%;
+      --nav-foreground: 210 40% 88%;
+      --nav-muted: 215 20% 55%;
+      --nav-hover: 222 47% 16%;
+      --nav-active: 210 60% 20%;
+      --nav-active-foreground: 210 80% 65%;
+      --nav-active-bar: 210 80% 55%;
+      --nav-border: 217 33% 22%;
+
+      /* ── Topbar — same in both modes ── */
+      --topbar: 228 37% 17%;
+      --topbar-foreground: 0 0% 100%;
+      --topbar-muted: 220 24% 68%;
+
+      /* ── Properties panel ── */
+      --props: 222 40% 11%;
+      --props-foreground: 210 40% 88%;
+      --props-border: 217 33% 22%;
+
+      /* ── KPI tiles — slightly lighter in dark ── */
+      --tile: 222 50% 30%;
+      --tile-foreground: 0 0% 100%;
+      --tile-warn: 38 80% 22%;
+      --tile-danger: 358 70% 28%;
+      --tile-success: 122 60% 18%;
+
+      /* ── Tags ── */
+      --tag-green-bg: 122 40% 15%;
+      --tag-green-fg: 142 60% 55%;
+      --tag-red-bg: 358 50% 18%;
+      --tag-red-fg: 358 64% 65%;
+      --tag-warn-bg: 38 60% 18%;
+      --tag-warn-fg: 38 92% 65%;
+      --tag-blue-bg: 210 50% 18%;
+      --tag-blue-fg: 210 80% 65%;
+      --tag-gray-bg: 217 33% 17%;
+      --tag-gray-fg: 215 20% 60%;
+
+      /* ── Sidebar ── */
+      --sidebar: 222 47% 12%;
+      --sidebar-foreground: 210 40% 88%;
+      --sidebar-accent: 210 60% 20%;
+      --sidebar-accent-foreground: 210 80% 65%;
+      --sidebar-border: 217 33% 22%;
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif), 'Segoe UI', Tahoma, Arial, sans-serif;
+  }
+}
+
+/* ── Respect reduced motion globally ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Topbar is always dark — never changes with theme ── */
+.topbar-fixed {
+  background-color: hsl(var(--topbar)) !important;
+  color: hsl(var(--topbar-foreground)) !important;
+}
+
+/* ── Logo on topbar or always-dark surfaces ── */
+.logo-dark-surface {
+  filter: brightness(0) saturate(0) invert(1) opacity(0.95);
+}
+
+/* ── Logo adaptive — inverts only in dark mode (login page) ── */
+@media (prefers-color-scheme: dark) {
+  .logo-adaptive {
+    filter: brightness(0) saturate(0) invert(1) opacity(0.95);
+  }
+}
+
+/* ── Print ── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ── Recharts ── */
+.recharts-rectangle.recharts-tooltip-cursor {
+  fill: transparent !important;
+}
+.recharts-default-tooltip {
+  background-color: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: 0 !important;
+}
+.recharts-default-tooltip .recharts-tooltip-label,
+.recharts-default-tooltip .recharts-tooltip-item,
+.recharts-default-tooltip .recharts-tooltip-item-name,
+.recharts-default-tooltip .recharts-tooltip-item-value {
+  color: hsl(var(--card-foreground)) !important;
+}
+
+/* ── D365-style table rows ── */
+.d365-row-selected td {
+  background-color: hsl(var(--nav-active)) !important;
+  border-left: 3px solid hsl(var(--primary)) !important;
+}
+
+/* ── Hide scrollbar utility ── */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── POS cart item enter animation ── */
+@keyframes cart-item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cart-item-enter {
+  animation: cart-item-enter 150ms ease-out both;
+}
+
+/* ── AMOUNT DUE flash ── */
+@keyframes amount-flash {
+  0%   { color: hsl(201 96% 40%); }
+  100% { color: inherit; }
+}
+.amount-flash {
+  animation: amount-flash 300ms ease-out both;
+}
+
+/* ── D365 table shared classes ── */
+.d365-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: auto;
+}.d365-th {
+  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  text-align: start;
+}
+.d365-td {
+  padding: 10px 14px;
+  border-bottom: 1px solid hsl(var(--border));
+  vertical-align: middle;
+  font-size: 12px;
+}
+.d365-table tbody tr:hover td {
+  background: hsl(var(--nav-hover));
+}
+
+/* ── Repeated page section strip ── */
+.page-strip {
+  background: hsl(var(--card));
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+/* ── Nav item rounded ── */
+.nav-item-rounded {
+  border-radius: calc(var(--radius) * 0.75);
+}
+
+/* ── POS tile micro-interaction — D365 Store Commerce style ── */
+
+/* Base tile — 3D perspective origin for press tilt */
+.pos-tile {
+  position: relative;
+  transition: box-shadow 80ms ease-out, transform 80ms ease-out;
+  transform: perspective(800px) rotateY(0deg);
+}
+
+/* Hover — white glow outline (from windows8/start/style.css) */
+.pos-tile:hover {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18);
+  transform: perspective(800px) rotateY(0deg);
+}
+
+/* Press — 3D perspective tilt alternating per position */
+.pos-tile:nth-of-type(4n-0):active {
+  transform: perspective(1000px) rotateX(20deg);
+  box-shadow: none;
+}
+.pos-tile:nth-of-type(4n-1):active {
+  transform: perspective(1000px) rotateX(20deg);
+  box-shadow: none;
+}
+.pos-tile:nth-of-type(4n-2):active {
+  transform: perspective(1000px) rotateY(20deg);
+  box-shadow: none;
+}
+.pos-tile:nth-of-type(4n-3):active {
+  transform: perspective(1000px) rotateX(-20deg);
+  box-shadow: none;
+}
+.pos-tile:nth-of-type(4n-4):active {
+  transform: perspective(1000px) rotateY(-20deg);
+  box-shadow: none;
+}
+.pos-tile--wide:active {
+  transform: perspective(1000px) rotateX(10deg) !important;
+  box-shadow: none;
+}
+
+/* ── KPI card transition ── */
+.kpi-card {
+  transition: filter var(--duration-fast) ease-out;
+}
+
+/* ── Hide number input spinners globally ── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
