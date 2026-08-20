@@ -218,6 +218,14 @@ These routes are registered but return `501 Not Implemented` until API credentia
 
 ---
 
+## Screenshots
+
+| Login | Admin Dashboard | POS |
+|-------|----------------|-----|
+| ![Login](pharmaflow-frontend/public/screenshots/login.png) | ![Admin](pharmaflow-frontend/public/screenshots/admin.png) | ![POS](pharmaflow-frontend/public/screenshots/pos.png) |
+
+---
+
 ## What Is and Isn't Implemented
 
 | Feature | Status |
