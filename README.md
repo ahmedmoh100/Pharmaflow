@@ -256,6 +256,4 @@ MIT License — see [LICENSE](LICENSE)
 
 ## Author
 
-Ahmed Mahmoud Hamza
-IT Graduate, Future University of Sudan
-GitHub: [ahmedmoh100](https://github.com/ahmedmoh100)
+Ahmed Mahmoud Hamza — GitHub: [ahmedmoh100](https://github.com/ahmedmoh100)
